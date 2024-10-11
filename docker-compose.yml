@@ -1,0 +1,16 @@
+name: odyssey
+services:
+  odyssey:
+    image: odyssey
+    volumes:
+      - ./odyssey.conf:/etc/odyssey/odyssey.conf
+    command: /usr/local/bin/odyssey /etc/odyssey/odyssey.conf
+    ports:
+      - "3422:3422"
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
